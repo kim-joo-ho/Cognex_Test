@@ -35,6 +35,7 @@
             this.cb_tool = new System.Windows.Forms.ComboBox();
             this.btn_inspect = new System.Windows.Forms.Button();
             this.nup_threshold = new System.Windows.Forms.NumericUpDown();
+            this.cb_toolShape = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.cogDisplay_main)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nup_threshold)).BeginInit();
             this.SuspendLayout();
@@ -87,7 +88,7 @@
             // 
             // nup_threshold
             // 
-            this.nup_threshold.Location = new System.Drawing.Point(659, 90);
+            this.nup_threshold.Location = new System.Drawing.Point(659, 224);
             this.nup_threshold.Maximum = new decimal(new int[] {
             255,
             0,
@@ -97,11 +98,21 @@
             this.nup_threshold.Size = new System.Drawing.Size(120, 21);
             this.nup_threshold.TabIndex = 5;
             // 
+            // cb_toolShape
+            // 
+            this.cb_toolShape.FormattingEnabled = true;
+            this.cb_toolShape.Location = new System.Drawing.Point(660, 90);
+            this.cb_toolShape.Name = "cb_toolShape";
+            this.cb_toolShape.Size = new System.Drawing.Size(121, 20);
+            this.cb_toolShape.TabIndex = 6;
+            this.cb_toolShape.SelectedIndexChanged += new System.EventHandler(this.cb_toolShape_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(806, 569);
+            this.Controls.Add(this.cb_toolShape);
             this.Controls.Add(this.nup_threshold);
             this.Controls.Add(this.btn_inspect);
             this.Controls.Add(this.cb_tool);
@@ -121,6 +132,7 @@
         private System.Windows.Forms.ComboBox cb_tool;
         private System.Windows.Forms.Button btn_inspect;
         private System.Windows.Forms.NumericUpDown nup_threshold;
+        private System.Windows.Forms.ComboBox cb_toolShape;
     }
 }
 

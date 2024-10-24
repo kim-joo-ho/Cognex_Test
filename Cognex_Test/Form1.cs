@@ -19,11 +19,13 @@ namespace Cognex_Test
         string imagePath;
         Bitmap bitmap;
         ICogImage cogImage;
-        CogRectangleAffine cogRectangleAffine;
-       
+        dynamic cogRectangleAffine;
+
+
         public Form1()
         {
             InitializeComponent();
+            init_listShape();
             cb_tool.Items.Add("Blob");
         }
 
@@ -40,6 +42,12 @@ namespace Cognex_Test
             cogDisplay_main.AutoFit = true;
         }
 
+        void init_listShape()
+        {
+            cb_toolShape.Items.Add("Rectangle Affine");
+            cb_toolShape.Items.Add("Circle");
+        }
+
         private void btn_loadImage_Click(object sender, EventArgs e)
         {
             LoadImage();
@@ -47,18 +55,48 @@ namespace Cognex_Test
 
         private void cb_tool_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cb_tool.SelectedItem.ToString() == "Blob")
+            cogRectangleAffine = new CogRectangleAffine();
+
+            if (cb_tool.SelectedItem.ToString() == "Blob")
             {
-                cogRectangleAffine = new CogRectangleAffine();
-                cogRectangleAffine.Interactive = true;
-                cogRectangleAffine.Selected = true;
-                cogRectangleAffine.GraphicDOFEnableBase = CogGraphicDOFConstants.All;
-                cogRectangleAffine.MouseCursor = CogStandardCursorConstants.Default;
+
+                if(cb_toolShape.SelectedItem == null)
+                {
+                    cogRectangleAffine = new CogRectangleAffine();
+                }
+                else if(cb_toolShape.SelectedItem.ToString() == "Rectangle Affine")
+                {
+                    cogRectangleAffine = new CogRectangleAffine();
+                }
+
+                init_shape(cogRectangleAffine);
                 
-                cogDisplay_main.InteractiveGraphics.Add(cogRectangleAffine, "blob", false);
+                cogDisplay_main.InteractiveGraphics.Add(cogRectangleAffine, "RectangleAffine", false);
             }
         }
+        private void cb_toolShape_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cb_toolShape.SelectedItem == null)
+            {
+                cogRectangleAffine = new CogRectangleAffine();
+            }
+            else if (cb_toolShape.SelectedItem.ToString() == "Rectangle Affine")
+            {
+                cogRectangleAffine = new CogRectangleAffine();
+                cogDisplay_main.InteractiveGraphics.Remove("RectangleAffine");
+                cogDisplay_main.InteractiveGraphics.Add(cogRectangleAffine, "RectangleAffine", false);
+            }
 
+            
+        }
+
+        void init_shape(dynamic shape)
+        {
+            shape.Interactive = true;
+            shape.Selected = true;
+            shape.GraphicDOFEnableBase = CogGraphicDOFConstants.All;
+            shape.MouseCursor = CogStandardCursorConstants.Default;
+        }
         void blob_inspection()
         {
             CogBlobTool blobTool = new CogBlobTool();
@@ -86,5 +124,7 @@ namespace Cognex_Test
         {
             blob_inspection();
         }
+
+        
     }
 }
