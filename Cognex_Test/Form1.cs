@@ -19,7 +19,7 @@ namespace Cognex_Test
         string imagePath;
         Bitmap bitmap;
         ICogImage cogImage;
-        dynamic cogRectangleAffine;
+        dynamic shape;
 
 
         public Form1()
@@ -55,39 +55,46 @@ namespace Cognex_Test
 
         private void cb_tool_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cogRectangleAffine = new CogRectangleAffine();
+            //cogRectangleAffine = new CogRectangleAffine();
 
             if (cb_tool.SelectedItem.ToString() == "Blob")
             {
 
                 if(cb_toolShape.SelectedItem == null)
                 {
-                    cogRectangleAffine = new CogRectangleAffine();
+                    shape = new CogRectangleAffine();
                 }
                 else if(cb_toolShape.SelectedItem.ToString() == "Rectangle Affine")
                 {
-                    cogRectangleAffine = new CogRectangleAffine();
+                    shape = new CogRectangleAffine();
                 }
+               
 
-                init_shape(cogRectangleAffine);
+                init_shape(shape);
                 
-                cogDisplay_main.InteractiveGraphics.Add(cogRectangleAffine, "RectangleAffine", false);
+                cogDisplay_main.InteractiveGraphics.Add(shape, "RectangleAffine", false);
             }
         }
         private void cb_toolShape_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cb_toolShape.SelectedItem == null)
             {
-                cogRectangleAffine = new CogRectangleAffine();
+                shape = new CogRectangleAffine();
             }
             else if (cb_toolShape.SelectedItem.ToString() == "Rectangle Affine")
             {
-                cogRectangleAffine = new CogRectangleAffine();
-                cogDisplay_main.InteractiveGraphics.Remove("RectangleAffine");
-                cogDisplay_main.InteractiveGraphics.Add(cogRectangleAffine, "RectangleAffine", false);
+                shape = new CogRectangleAffine();
+                delete_shape();
+                cogDisplay_main.InteractiveGraphics.Add(shape, "RectangleAffine", false);
+            }
+            else if(cb_toolShape.SelectedItem.ToString() == "Circle")
+            {
+                shape = new CogCircle();
+                delete_shape();
+                cogDisplay_main.InteractiveGraphics.Add(shape, "Circle", false);
             }
 
-            
+            init_shape(shape);
         }
 
         void init_shape(dynamic shape)
@@ -96,6 +103,12 @@ namespace Cognex_Test
             shape.Selected = true;
             shape.GraphicDOFEnableBase = CogGraphicDOFConstants.All;
             shape.MouseCursor = CogStandardCursorConstants.Default;
+        }
+        void delete_shape()
+        {
+            cogDisplay_main.InteractiveGraphics.Clear();
+            //cogDisplay_main.InteractiveGraphics.Remove("RectangleAffine");
+            //cogDisplay_main.InteractiveGraphics.Remove("Circle");
         }
         void blob_inspection()
         {
@@ -106,7 +119,7 @@ namespace Cognex_Test
             blobTool.RunParams.SegmentationParams.Polarity = CogBlobSegmentationPolarityConstants.LightBlobs;
             blobTool.RunParams.SegmentationParams.HardFixedThreshold = (int)nup_threshold.Value;
             blobTool.InputImage = cogDisplay_main.Image;
-            blobTool.Region = cogRectangleAffine;
+            blobTool.Region = shape;
 
             blobTool.Run();
 
