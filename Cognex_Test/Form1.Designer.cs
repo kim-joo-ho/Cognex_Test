@@ -36,6 +36,9 @@
             this.btn_inspect = new System.Windows.Forms.Button();
             this.nup_threshold = new System.Windows.Forms.NumericUpDown();
             this.cb_toolShape = new System.Windows.Forms.ComboBox();
+            this.lb_toolName = new System.Windows.Forms.Label();
+            this.lb_shape = new System.Windows.Forms.Label();
+            this.lb_threshold = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.cogDisplay_main)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nup_threshold)).BeginInit();
             this.SuspendLayout();
@@ -70,7 +73,7 @@
             // cb_tool
             // 
             this.cb_tool.FormattingEnabled = true;
-            this.cb_tool.Location = new System.Drawing.Point(659, 63);
+            this.cb_tool.Location = new System.Drawing.Point(659, 199);
             this.cb_tool.Name = "cb_tool";
             this.cb_tool.Size = new System.Drawing.Size(121, 20);
             this.cb_tool.TabIndex = 3;
@@ -78,7 +81,7 @@
             // 
             // btn_inspect
             // 
-            this.btn_inspect.Location = new System.Drawing.Point(659, 512);
+            this.btn_inspect.Location = new System.Drawing.Point(659, 510);
             this.btn_inspect.Name = "btn_inspect";
             this.btn_inspect.Size = new System.Drawing.Size(75, 23);
             this.btn_inspect.TabIndex = 4;
@@ -88,7 +91,7 @@
             // 
             // nup_threshold
             // 
-            this.nup_threshold.Location = new System.Drawing.Point(659, 224);
+            this.nup_threshold.Location = new System.Drawing.Point(659, 379);
             this.nup_threshold.Maximum = new decimal(new int[] {
             255,
             0,
@@ -101,17 +104,47 @@
             // cb_toolShape
             // 
             this.cb_toolShape.FormattingEnabled = true;
-            this.cb_toolShape.Location = new System.Drawing.Point(660, 90);
+            this.cb_toolShape.Location = new System.Drawing.Point(659, 244);
             this.cb_toolShape.Name = "cb_toolShape";
             this.cb_toolShape.Size = new System.Drawing.Size(121, 20);
             this.cb_toolShape.TabIndex = 6;
             this.cb_toolShape.SelectedIndexChanged += new System.EventHandler(this.cb_toolShape_SelectedIndexChanged);
+            // 
+            // lb_toolName
+            // 
+            this.lb_toolName.AutoSize = true;
+            this.lb_toolName.Location = new System.Drawing.Point(659, 181);
+            this.lb_toolName.Name = "lb_toolName";
+            this.lb_toolName.Size = new System.Drawing.Size(30, 12);
+            this.lb_toolName.TabIndex = 7;
+            this.lb_toolName.Text = "Tool";
+            // 
+            // lb_shape
+            // 
+            this.lb_shape.AutoSize = true;
+            this.lb_shape.Location = new System.Drawing.Point(659, 229);
+            this.lb_shape.Name = "lb_shape";
+            this.lb_shape.Size = new System.Drawing.Size(70, 12);
+            this.lb_shape.TabIndex = 8;
+            this.lb_shape.Text = "Tool Shape";
+            // 
+            // lb_threshold
+            // 
+            this.lb_threshold.AutoSize = true;
+            this.lb_threshold.Location = new System.Drawing.Point(661, 361);
+            this.lb_threshold.Name = "lb_threshold";
+            this.lb_threshold.Size = new System.Drawing.Size(62, 12);
+            this.lb_threshold.TabIndex = 9;
+            this.lb_threshold.Text = "Threshold";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(806, 569);
+            this.Controls.Add(this.lb_threshold);
+            this.Controls.Add(this.lb_shape);
+            this.Controls.Add(this.lb_toolName);
             this.Controls.Add(this.cb_toolShape);
             this.Controls.Add(this.nup_threshold);
             this.Controls.Add(this.btn_inspect);
@@ -123,6 +156,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cogDisplay_main)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nup_threshold)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -133,6 +167,9 @@
         private System.Windows.Forms.Button btn_inspect;
         private System.Windows.Forms.NumericUpDown nup_threshold;
         private System.Windows.Forms.ComboBox cb_toolShape;
+        private System.Windows.Forms.Label lb_toolName;
+        private System.Windows.Forms.Label lb_shape;
+        private System.Windows.Forms.Label lb_threshold;
     }
 }
 
