@@ -52,7 +52,7 @@
             this.cogDisplay_main.ColorMapUpperRoiLimit = 1D;
             this.cogDisplay_main.DoubleTapZoomCycleLength = 2;
             this.cogDisplay_main.DoubleTapZoomSensitivity = 2.5D;
-            this.cogDisplay_main.Location = new System.Drawing.Point(42, 34);
+            this.cogDisplay_main.Location = new System.Drawing.Point(29, 34);
             this.cogDisplay_main.MouseWheelMode = Cognex.VisionPro.Display.CogDisplayMouseWheelModeConstants.Zoom1;
             this.cogDisplay_main.MouseWheelSensitivity = 1D;
             this.cogDisplay_main.Name = "cogDisplay_main";
